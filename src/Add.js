@@ -35,7 +35,7 @@ function Add(props) {
         props.refreshList();
       })
       .catch(() => {
-        alert("an error occured, please try again");
+        alert("an error occurred, please try again");
         cDisabled(false);
       });
   };
@@ -47,7 +47,7 @@ function Add(props) {
       <br />
       <form onSubmit={(e) => submitHandler(e)} id="addForm">
         <br />
-        <label for="comment">Event:</label>
+        <label form="comment">Event:</label>
         <br />
         <textarea
           type="text"
@@ -57,7 +57,7 @@ function Add(props) {
           cols={40}
           required="required"
           placeholder="Event name"
-          class="form-control"
+          
         />
         <br />
         Location: <br />

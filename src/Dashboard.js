@@ -8,6 +8,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
+import Navbar from "react-bootstrap/Navbar";
+
+
 
 
 
@@ -57,12 +60,19 @@ function Dashboard(props) {
   };
 
   return (
-    <><main>
+    <>
+    <Navbar>
+      <Container>
+        <Navbar.Brand><Button onClick={props.logout}>Logout</Button></Navbar.Brand>
+      </Container>
+    </Navbar>
+    
+    <main>
       <Container className="mx-auto text-center mt-2 contentContainer">
         <Row className="headerRow">
-          <h1 className="header-title">Event App Dashboard</h1>
-          <h5 className="header-body">To add a new Post click add post button</h5>
-          <h5 className="header-body">To search for an Event click Find Event button</h5>
+            <h1 className="header-title">Welcome , {props.user}!</h1>
+          <h5 className="header-body"></h5>
+          <h5 className="header-body"></h5>
         </Row>
       <br />
         <Row className="bodyRow">
@@ -77,9 +87,9 @@ function Dashboard(props) {
                 }}
                 currentAd={current}
               />
-              <a class="see-less-btn" onClick={() => setShow(!show)}>See less</a>
+              <a className="see-less-btn" onClick={() => setShow(!show)}>See less</a>
             </>
-            : <a class="buttonShowAdd" onClick={() => setShow(!show)}>Add a post</a>}
+            : <a className="buttonShowAdd" onClick={() => setShow(!show)}>Add user information</a>}
           </Col>
            <Col xs={6}>
           {show2 ?
@@ -89,21 +99,21 @@ function Dashboard(props) {
                 querySearch = {querySearch}
                 currentAd={current}
               />
-              <a class="see-less-btn" onClick={() => setShow2(!show2)}>See less</a>
+              <a className="see-less-btn" onClick={() => setShow2(!show2)}>See less</a>
               <a class="see-less-btn" onClick={() => refreshList()}>Clear Filtered List</a>
             </>
-            : <a class="buttonShowAdd" onClick={() => setShow2(!show2)}>Find Event</a>}
+            : <a className="buttonShowAdd" onClick={() => setShow2(!show2)}>Search participants</a>}
           </Col>
         </Row>
         <Row className="tableRow">
           <table>
             <thead>
               <tr >
-                <th>Event</th>
-                <th>Location</th>
-                <th>Summary</th>
-                <th>Date</th>
-                <th>Time</th>
+                <th>Name bio</th>
+                <th>Link to LinkedIn</th>
+                <th>CV</th>
+                <th>Portfolio website</th>
+                <th>Picture</th>
                 <th>Modify</th>
               </tr>
             </thead>

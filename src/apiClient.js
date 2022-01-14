@@ -38,10 +38,17 @@ export class ApiClient {
   }
 
   login(username,password) {
-    return this.apiCall("post",url + "auth/",{username: username, password:password});
+    return this.apiCall("post",url + "auth/",{username: username, password: password});
+  }
+  signUp(username, password, email) {
+    console.log("username",username);
+    return this.apiCall("post", url + "user/", { userName: username, password: password, userType: 'participant', email: email });
   }
 
   getAds() {
+    return this.authenticatedCall("get", url);
+  }
+  getUsers() {
     return this.authenticatedCall("get", url);
   }
   queryResult(searchParams){
@@ -51,6 +58,7 @@ export class ApiClient {
   addAd(event, location, summary, date, time ) {
     return this.authenticatedCall("post", url, {event, location, summary, date, time });
   }
+  
 
   removeAd(id) {
     return this.authenticatedCall("delete", `${url}${id}`);
