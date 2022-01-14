@@ -40,9 +40,9 @@ export class ApiClient {
   login(username,password) {
     return this.apiCall("post",url + "auth/",{username: username, password: password});
   }
-  signUp(username, password, email) {
+  signUp(username, password ,email) {
     console.log("username",username);
-    return this.apiCall("post", url + "user/", { userName: username, password: password, userType: 'participant', email: email });
+    return this.apiCall("post", url + "user/", { username: username, password: password, email: email, userType: 'participant' });
   }
 
   getAds() {

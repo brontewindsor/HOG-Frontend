@@ -46,7 +46,6 @@ function Login(props) {
                   {" "}
                   Login{" "}
                 </button>
-                {/* <input className="login" type="submit" value="Login" disabled={disabled}/> */}
 
 
               </div>
@@ -59,8 +58,6 @@ function Login(props) {
                   {" "}
                   Sign Up{" "}
                 </button>
-                {/* <input className="form-group" type="submit" value="Register" disabled={disabled}/> */}
-                {/* <a href="/">Register</a> */}
               </div>
 
             </div>
