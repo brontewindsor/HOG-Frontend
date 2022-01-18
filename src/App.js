@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Dashboard from "./Dashboard";
+import Dashboard from "./components/Dashboard";
 import { ApiClient } from "./apiClient";
-import Login from "./Login";
-import SignUp from "./SignUp";
+import Login from "./login/Login";
+import SignUp from "./login/SignUp";
 
 
 function App() {

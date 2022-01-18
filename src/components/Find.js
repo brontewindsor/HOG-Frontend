@@ -8,10 +8,10 @@ function Add(props) {
     const submitHandler = (e) => {
         e.preventDefault();
         const searchParams = {
-                sEvent: e.target.sEvent.value,
-                sLocation:e.target.sLocation.value,
-                minDate: e.target.dateMin.value,
-                maxDate:e.target.dateMax.value,
+            sEvent: e.target.sEvent.value,
+            sLocation: e.target.sLocation.value,
+            minDate: e.target.dateMin.value,
+            maxDate: e.target.dateMax.value,
         }
         props.querySearch(searchParams);
     };
@@ -37,7 +37,7 @@ function Add(props) {
                 Location: <br />
                 <input
                     type="text"
-                    defaultValue={props.currentAd?.sLocation ||""}
+                    defaultValue={props.currentAd?.sLocation || ""}
                     name="sLocation"
                     disabled={disabled}
                     size="40"
