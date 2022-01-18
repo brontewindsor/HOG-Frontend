@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard.module";
 import { ApiClient } from "./apiClient";
 import Login from "./login/Login";
 import SignUp from "./login/SignUp";

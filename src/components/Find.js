@@ -31,7 +31,7 @@ function Add(props) {
                     disabled={disabled}
                     cols={40}
                     placeholder="Event name"
-                    class="form-control"
+                    className="form-control"
                 />
                 <br />
                 Location: <br />

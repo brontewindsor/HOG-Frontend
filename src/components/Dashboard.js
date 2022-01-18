@@ -14,6 +14,12 @@ import Navbar from "react-bootstrap/Navbar";
 
 // if userType = employer >>>> redirected to employer dashboard
 // if userType = admin >>>> redirected to admin dashboard
+/** 
+ * title / gender
+- first and last name,
+- e-mail address (to be able to contact reviewers and sending them bulk e-mails.)
+- the country. 
+*/
 
 
 
