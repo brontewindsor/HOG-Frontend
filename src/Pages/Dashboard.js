@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Add from "./Add";
-import Find from "./Find";
+import Add from '../components/Add';
+import Find from "../components/Find";
 import './Dashboard.module.css';
 import classes from './Dashboard.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
