@@ -1,94 +1,53 @@
 import React, { useState } from "react";
+import { ApiClient } from "../apiClient";
+import App from '../App';
+import LoginUser from "./LoginUser";
+import SignUp from "./SignUp";
+
+
 
 function Login(props) {
+    const [token, changeToken] = useState(window.localStorage.getItem("token"));
+    const [user, changeUser] = useState(window.localStorage.getItem("user"));
+    const [signUp, changeSignUp] = useState(false);
+    const client = new ApiClient(
+        token,
+        () => logout()
+    );
 
-  const [disabled, cDisabled] = useState(false);
-  const submitHandler = (e) => {
-    console.log("submitted");
-    e.preventDefault();
-    cDisabled(true);
+    const login = (newToken, newUser) => {
+        window.localStorage.setItem("token", newToken);
+        window.localStorage.setItem("user", newUser);
+        changeToken(newToken);
+        changeUser(newUser);
+    }
+    const signUpClick = () => {
+        changeSignUp(true);
+    }
 
-    const user = e.target.username.value;
-    props.client
-      .login(e.target.username.value, e.target.password.value)
-      .then((response) => {
-        cDisabled(false);
-        console.log(response.data.token);
-        props.loggedIn(response.data.token, user);
+    const logout = () => {
+        window.localStorage.removeItem("token");
+        changeToken(undefined);
+    }
 
-      })
-      .catch((error) => {
-        alert("an error occurred, please try again")
-        console.log(error);
-        cDisabled(false);
-      });
-  };
+    return (
 
+        <>
 
-  return (
-    <div className="outer-container">
-      <div className="login-container">
-        <div className="login-div">
-          <form onSubmit={(e) => submitHandler(e)}>
-            <div className="form-inner">
-              <h2 >Login</h2>
-              <div className="form-group">
-                <label htmlFor="name">Username:</label>
-                <input type="text" name="username" id="username" disabled={disabled} />
-              </div>
-              <br />
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input type="password" name="password" id="password" disabled={disabled} />
-              </div>
-              <div className="form-group">
-                <button type="submit" disabled={disabled}>
-                  {" "}
-                  Login{" "}
-                </button>
+            {token ? (
+                <App client={client} logout={logout} user={user} />
+            ) :
+                (signUp ?
+                    (<div><SignUp client={client} changeSignUp={changeSignUp} /></div>) : (<LoginUser loggedIn={(token, newUser) => login(token, newUser)}
+                        client={client}
+                        signUp={signUp}
+                        signUpClick={signUpClick} />))}
 
 
-              </div>
-              <div className="form-group">
-                <label htmlFor="name">Don't have an account?</label>
-              </div>
-
-              <div>
-                <button type="button" onClick={props.signUpClick}>
-                  {" "}
-                  Sign Up{" "}
-                </button>
-              </div>
-
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    // <>
-    //   Login
-    //   <br />
-    //       <form onSubmit={(e) => submitHandler(e)}>
-    //         username
-    //         <br />
-    //         <input type="text" name="username" disabled={disabled} />
-    //         <br />
-    //         password
-    //         <br />
-    //         <input type="password" name="password" disabled={disabled} />
-    //         <br />
-    //         <br />
-    //         <button type="submit" disabled={disabled}>
-    //           {" "}
-    //           Submit{" "}
-    //         </button>
-    //         <button type="button" onClick={props.signUpClick}>
-    //           {" "}
-    //           signUp{" "}
-    //         </button>
-    //       </form>
-    // </>
-  );
+        </>
+    );
 }
 
 export default Login;
+
+/** <div>{props.children}</div> */

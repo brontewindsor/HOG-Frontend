@@ -1,183 +1,45 @@
-th {
-  border-bottom: 1px solid black;
-  color: #073366;
-  font-size: 100%;
-}
-tr:nth-child(even){
-  background-color: #1073E585;
-  color: white;
-  font-size: 100%;
-}
-tr:nth-child(odd){
-  color: #054A99;
-  background-color: #8fc3ff7e;
-  font-size: 100%;
-}
-main {
-  min-height: 100vh;
-  min-width: 100vw;
-  overflow: hidden;
-  background-color: #264466;
-}
-.headerRow{
-  background-color: #ffffff;
-}
-.contentContainer{
-  width: 80%;
-  height: 100%;
-  align-items: center;
-  margin: auto;
-  background-color: #f2f2f2;
-}
-.header_title{
-  font-size: 35px;
-  text-align: center;
-  color: #073366;
-  text-shadow: 1px 1px rgba(50,50,70,0.5);
-  padding-bottom: 20px;
-}
-.header_body{
-  font-size:20px;
-  color: #073366;
-  font-size: 100%;
-}
-.form{
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  align-items: center;
-}
-table{
-  table-layout: fixed;
-  
-}
-.formContainer{
-  justify-content: center;
-  align-items: center;
-  display: inline-block;
-  margin: auto;
-}
-.buttonUpdate {
-  background-color: #D2E4FD;
-  border-radius: 5px;
-  color: #5C8CAD;
-  padding: 3px 15px;
-  padding-top: 5px;
-  border-width: 2px;
-  border: none;
-  outline: none;
-  cursor:pointer;
-  transition:0.5s ease;
-  margin:2px;
-  font-size: 100%;
-}
-.buttonUpdate:hover {
-  background-color: #5C8CAD;
-  color: #FFF;
-}
-.buttonRemove {
-  background-color: #F8D3CF;
-  border-radius: 5px;
-  color: #6b0404;
-  padding: 3px 15px;
-  border: #6b0404;
-  border-width: 2px;
-  border: none;
-  outline: none;
-  cursor:pointer;
-  transition:0.5s ease;
-  margin:2px;
-  font-size: 100%;
-}
-.buttonRemove:hover {
-  background-color: #6b0404;
-  color: white;
-}
-.buttonSubmit{
-  background-color: lightgreen;
-  border-radius: 5px;
-  color: #0b6607;
-  padding: 3px 15px;
-  padding-top: 5px;
-  border: blueviolet;
-  border-width: 2px;
-}
-.buttonSubmit:hover {
-  background-color: #0b6607;
-  color: white;
-}
-.formRow{
-  align-items: center;
-  justify-content: center;
-  display: inline-block;
-}
-.buttonShowAdd, .buttonShowAdd2{
-  padding: 3px 15px;
-  /* padding-bottom: 5px; */
-  /* margin-bottom: 10px; */
-  border-radius: 5px;
-  background-color: #1073e585;
-  color: #fff;
-  border: none;
-  outline:none;
-  font-size: 12px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s ease;
-  align-items: center;
-  justify-content:center;
+.form {
+  padding: 1rem;
 }
 
-.buttonShowAdd:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: rgba(53, 53, 53, 0.9);
-}
-.buttonShowAdd2{
-  padding: 3px 15px;
-  /* padding-bottom: 5px; */
-  /* margin-bottom: 10px; */
-  border-radius: 5px;
-  background-color: #26446692;
-  color: #fff;
-  border: none;
-  outline:none;
-  font-size: 12px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s ease;
-  align-items: center;
-  justify-content:center;
-}
-.buttonShowAdd:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #073366;
-}
-.see_less_btn {
-  padding: 3px 15px;
-  border-radius: 5px;
-  background-color: #1073e585;
-  color: #fff;
-  border: none;
-  outline:none;
-  font-size: 12px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s ease;
+.control {
+  margin-bottom: 0.5rem;
 }
 
-.see_less_btn:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: rgba(53, 53, 53, 0.9);
-  transition: 0.5s ease;
+.control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
-.bodyRow{
-  padding: 10px;
-  margin: none;
+
+.control input,
+.control textarea {
+  display: block;
+  font: inherit;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  width: 100%;
 }
-a{
-  font-size: 1vw;
+
+.actions {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #77002e;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #77002e;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #a50e48;
+  border-color: #a50e48;
 }

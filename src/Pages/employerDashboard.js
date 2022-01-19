@@ -1,4 +1,6 @@
-function employerDashboard(props) { }
+function employerDashboard(props) {
+
+}
 
 
 export default employerDashboard;
