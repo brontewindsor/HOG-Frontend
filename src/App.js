@@ -18,6 +18,7 @@ function App(props) {
           client={props.client}
           logout={props.logout}
           user={props.user} />} />
+        <Route path='/participant' element={<ParticipantDashboard />} />
 
         <Route path='/employer' element={<EmployerDashboard />} />
 
