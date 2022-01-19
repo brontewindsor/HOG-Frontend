@@ -1,15 +1,14 @@
+import { useRef } from 'react';
 import React, { useState, useEffect } from "react";
-import Add from '../components/Add';
-import Find from "../components/Find";
-import './Dashboard.module.css';
-import classes from './Dashboard.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Navbar from "react-bootstrap/Navbar";
+import Card from '../components/Card';
+import ParticipantDashboard from '../pages/ParticipantDashboard';
+import EmployerDashboard from '../pages/EmployerDashboard';
+import AdminDashboard from '../pages/AdminDashboard';
+import classes from './Dashboard.module.css';
 
 
 // if userType = employer >>>> redirected to employer dashboard
@@ -25,7 +24,40 @@ import Navbar from "react-bootstrap/Navbar";
 
 
 function Dashboard(props) {
-  const [ads, cAds] = useState([]);
+  const titleInputRef = useRef();
+  const firstNameInputRef = useRef();
+  const lastNameInputRef = useRef();
+  const addressInputRef = useRef();
+
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const enteredTitle = titleInputRef.current.value;
+    const enteredFirstName = firstNameInputRef.current.value;
+    const enteredLastName = lastNameInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value;
+
+    const userData = {
+      title: enteredTitle,
+      firstName: enteredFirstName,
+      lastName: enteredLastName,
+      address: enteredAddress,
+    };
+
+    props.onAddUser(userData);
+
+    if (this.props.client.userType === 'participant') {
+      return <ParticipantDashboard />
+    }
+    if (this.props.client.userType === 'employer') {
+      return <EmployerDashboard />
+    } else {
+      return <AdminDashboard />
+    }
+  }
+
+  /**const [ads, cAds] = useState([]);
   const [current, cCurrent] = useState(undefined);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -67,75 +99,45 @@ function Dashboard(props) {
       );
     });
   };
+  **/
+
 
   return (
-    <>
+    <div>
       <Navbar>
         <Container>
-          <Navbar.Brand><Button onClick={props.logout}>Logout</Button></Navbar.Brand>
+          <Navbar.Brand>
+            <h1 className={classes.header_title}>Welcome , {props.user}!</h1>
+            <Button onClick={props.logout}>Logout</Button>
+          </Navbar.Brand>
         </Container>
       </Navbar>
 
-      <main>
-        <Container className="mx-auto text-center mt-2 contentContainer" className={classes.contentContainer}>
-          <Row className={classes.headerRow}>
-            <h1 className={classes.header_title}>Welcome , {props.user}!</h1>
-            <h5 className={classes.header_body}></h5>
-            <h5 className={classes.header_body}></h5>
-          </Row>
-          <br />
-          <Row className={classes.bodyRow}>
-            <Col xs={6}>
-              {show ?
-                <>
-                  <Add
-                    client={props.client}
-                    refreshList={() => {
-                      refreshList();
-                      cCurrent(undefined);
-                    }}
-                    currentAd={current}
-                  />
-                  <a className={classes.see_less_btn} onClick={() => setShow(!show)}>See less</a>
-                </>
-                : <a className={classes.buttonShowAdd} onClick={() => setShow(!show)}>Add user information</a>}
-            </Col>
-            <Col xs={6}>
-              {show2 ?
-                <>
-                  <Find
-                    client={props.client}
-                    querySearch={querySearch}
-                    currentAd={current}
-                  />
-                  <a className={classes.see_less_btn} onClick={() => setShow2(!show2)}>See less</a>
-                  <a className={classes.see_less_btn} onClick={() => refreshList()}>Clear Filtered List</a>
-                </>
-                : <a className={classes.buttonShowAdd} onClick={() => setShow2(!show2)}>Search participants</a>}
-            </Col>
-          </Row>
-          <Row className={classes.tableRow}>
-            <table>
-              <thead>
-                <tr >
-                  <th>Name bio</th>
-                  <th>Link to LinkedIn</th>
-                  <th>CV</th>
-                  <th>Portfolio website</th>
-                  <th>Picture</th>
-                  <th>Modify</th>
-                </tr>
-              </thead>
-              <tbody>{buildRows()}</tbody>
-            </table>
-          </Row>
-          <br />
-          <br />
-          <Row className={classes.formRow}>
-          </Row>
-        </Container>
-      </main>
-    </>
+      <Card>
+        <form className={classes.form} onSubmit={submitHandler}>
+          <div className={classes.control}>
+            <label htmlFor='title'>Title</label>
+            <input type='text' required id='title' ref={titleInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='firstName'>First Name</label>
+            <input type='text' required id='firstName' ref={firstNameInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='lastName'>Last Name</label>
+            <input type='text' required id='lastName' ref={lastNameInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='address'>Address</label>
+            <input type='text' required id='address' ref={addressInputRef} />
+          </div>
+
+          <div className={classes.actions}>
+            <button>Add User Details</button>
+          </div>
+        </form>
+      </Card>
+    </div>
   );
 }
 

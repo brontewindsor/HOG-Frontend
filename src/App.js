@@ -1,53 +1,31 @@
 import React, { useState } from "react";
-import { ApiClient } from "./apiClient";
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import AdminDashboard from './pages/AdminDashboard';
 import Dashboard from './pages/Dashboard';
-import Login from "./login/Login";
-import SignUp from "./login/SignUp";
+import EmployerDashboard from './pages/EmployerDashboard';
+import ParticipantDashboard from './pages/ParticipantDashboard';
 
 
 
-function App() {
-  const [token, changeToken] = useState(window.localStorage.getItem("token"));
-  const [user, changeUser] = useState(window.localStorage.getItem("user"));
-  const [signUp, changeSignUp] = useState(false);
-  const client = new ApiClient(
-    token,
-    () => logout()
-  );
+function App(props) {
 
-  const login = (newToken, newUser) => {
-    window.localStorage.setItem("token", newToken);
-    window.localStorage.setItem("user", newUser);
-    changeToken(newToken);
-    changeUser(newUser);
-  }
-  const signUpClick = () => {
-    changeSignUp(true);
-  }
 
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    changeToken(undefined);
-  }
 
   return (
+    <Router >
+      <Routes>
+        <Route path='/' element={<Dashboard
+          client={props.client}
+          logout={props.logout}
+          user={props.user} />} />
 
-    <>
+        <Route path='/employer' element={<EmployerDashboard />} />
 
-
-      {token ? (
-        <Dashboard client={client} logout={logout} user={user} />
-      ) :
-        (signUp ?
-          (<div><SignUp client={client} changeSignUp={changeSignUp}
-          /></div>) : (<Login loggedIn={(token, newUser) => login(token, newUser)}
-            client={client}
-            signUp={signUp}
-            signUpClick={signUpClick} />))}
+        <Route path='/admin' element={<AdminDashboard />} />
 
 
-
-    </>
+      </Routes>
+    </Router>
   );
 }
 

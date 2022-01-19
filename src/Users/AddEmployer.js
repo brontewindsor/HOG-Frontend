@@ -8,3 +8,7 @@
 
 //access platform chat 
 
+function AddEmployer() { }
+
+
+export default AddEmployer;

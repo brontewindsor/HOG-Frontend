@@ -5,3 +5,9 @@
 
 //Track outcomes :from total of participant what percentage is hired : where?
 //if they are available and looking for job in the field
+
+
+function AddAdmin() { }
+
+
+export default AddAdmin;

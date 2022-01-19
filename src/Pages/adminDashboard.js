@@ -1,3 +1,5 @@
-function adminDashboard(props) { }
+function adminDashboard(props) {
+
+}
 
 export default adminDashboard;

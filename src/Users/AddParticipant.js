@@ -12,3 +12,7 @@
 
 //status: hired or available
 
+function AddParticipant() { }
+
+
+export default AddParticipant;
