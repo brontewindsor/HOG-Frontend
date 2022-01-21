@@ -1,0 +1,67 @@
+/* Nav bar */
+.Navbar {
+  background-color: #e8e8e8;
+}
+.nav-buttons {
+  float: right;
+}
+.navbar {
+  background-color: #e8e8e8;
+}
+
+/* @media screen and (max-width: 1199px) {
+    .nav-buttons {
+      border-left: 200px;
+    }
+  } */
+
+.navbar .messages {
+  background-color: orange;
+  border: none;
+}
+.navbar .logout-btn {
+  background-color: orange;
+  border: none;
+  height: 35px;
+  font-size: 18px;
+}
+
+.navbar .socialcards {
+  background-color: orange;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.navbar .EditProfile {
+  background-color: orange;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+/* 
+.navbar .EditProfile {
+  background-color: orange;
+  border: none;
+} */
+
+.navbar .EditProfile:hover {
+  background-color: orangered;
+  border: none;
+}
+.navbar .logout-btn:hover {
+  background-color: orangered;
+  border: none;
+}
+
+.navbar .socialcards:hover {
+  background-color: orangered;
+  border: none;
+}
