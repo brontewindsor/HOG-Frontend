@@ -1,20 +1,25 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+/* welcome participant */
+.welcome_participant {
+  color: orange;
+  margin-left: 33.5%;
 }
 
 /* Login form */
 .outer-container {
-  height: 100vh;
+  height: 800px;
   width: 100vw;
   background-color: #e8e8e8;
 }
@@ -32,6 +37,7 @@ code {
   font-size: 16px;
 }
 .login-div {
+  margin-top: 20px;
   background-color: orange;
   /* background-image: linear-gradient(
     to right,
@@ -44,12 +50,25 @@ code {
 
   padding: 10px;
   border-radius: 10px;
-  margin-top: 35px;
   margin-right: 20px;
 }
 form {
   display: block;
   position: relative;
+}
+.edit_profile {
+  background-color: orange;
+  text-decoration: none;
+  width: 80px;
+  border-radius: 5px;
+  text-align: center;
+  height: 25px;
+  float: right;
+}
+.edit_profile .EditProfile {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
 }
 
 /* form:after {
@@ -161,4 +180,9 @@ form .form-inner button[type="button"]:hover {
 
 /* Register Form */
 
-
+.radio-button-employer {
+  float: left;
+}
+.radio-button-participant {
+  float: right;
+}

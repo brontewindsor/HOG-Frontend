@@ -5,10 +5,13 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from "react-bootstrap/Navbar";
 import Card from '../components/Card';
-import ParticipantDashboard from '../pages/ParticipantDashboard';
-import EmployerDashboard from '../pages/EmployerDashboard';
-import AdminDashboard from '../pages/AdminDashboard';
+import ParticipantDashboard from './ParticipantDashboard';
+import EmployerDashboard from './EmployerDashboard';
+import AdminDashboard from './AdminDashboard';
 import classes from './Dashboard.module.css';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink, Switch, Redirect } from "react-router-dom";
+import SocialCard from "./SocialCard";
+// import '../components/Navbar.css';
 
 
 // if userType = employer >>>> redirected to employer dashboard
@@ -19,8 +22,6 @@ import classes from './Dashboard.module.css';
 - e-mail address (to be able to contact reviewers and sending them bulk e-mails.)
 - the country. 
 */
-
-
 
 
 function Dashboard(props) {
@@ -61,15 +62,12 @@ function Dashboard(props) {
   const [current, cCurrent] = useState(undefined);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
-
   const refreshList = () => {
     props.client.getAds().then((response) => cAds(response.data));
   };
-
   const removeAdvert = (id) => {
     props.client.removeAd(id).then(() => refreshList());
   };
-
   const updateAdvert = (ad) => {
     cCurrent(ad);
     setShow(!show);
@@ -77,11 +75,9 @@ function Dashboard(props) {
   const querySearch = (searchParams) => {
     props.client.queryResult(searchParams).then((response) => cAds(response.data))
   }
-
   useEffect(() => {
     refreshList();
   }, []);
-
   const buildRows = () => {
     return ads.map((current) => {
       return (
@@ -103,17 +99,29 @@ function Dashboard(props) {
 
 
   return (
-    <div>
+
+    <>
+    {/* <div className='nav-buttons'>
       <Navbar>
         <Container>
           <Navbar.Brand>
-            <h1 className={classes.header_title}>Welcome , {props.user}!</h1>
-            <Button onClick={props.logout}>Logout</Button>
+            <Link className="socialcards" to="/SocialCard">Search Profiles</Link>
+            <Link className="EditProfile" to="/EditProfile">Edit Profile</Link>
+            <Button className="logout-btn" onClick={props.logout}>Logout</Button>
           </Navbar.Brand>
         </Container>
       </Navbar>
+      </div> */}
 
-      <Card>
+      <div>
+      {/* <h1 className={classes.header_title}>Welcome , {props.user}!</h1> */}
+      {props.userType == "employer" ? <EmployerDashboard /> : <ParticipantDashboard />}
+
+
+
+      
+
+      {/* <Card>
         <form className={classes.form} onSubmit={submitHandler}>
           <div className={classes.control}>
             <label htmlFor='title'>Title</label>
@@ -131,13 +139,13 @@ function Dashboard(props) {
             <label htmlFor='address'>Address</label>
             <input type='text' required id='address' ref={addressInputRef} />
           </div>
-
           <div className={classes.actions}>
             <button>Add User Details</button>
           </div>
         </form>
-      </Card>
+      </Card> */}
     </div>
+    </>
   );
 }
 

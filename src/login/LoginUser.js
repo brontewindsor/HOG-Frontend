@@ -14,7 +14,7 @@ function LoginUser(props) {
       .then((response) => {
         cDisabled(false);
         console.log(response.data.token);
-        props.loggedIn(response.data.token, user);
+        props.loggedIn(response.data.token, user, response.data.userType);
 
       })
       .catch((error) => {
@@ -26,6 +26,10 @@ function LoginUser(props) {
 
 
   return (
+    <>
+    {/* <div>
+      <h1>{userType}</h1>
+    </div> */}
     <div className="outer-container">
       <div className="login-container">
         <div className="login-div">
@@ -69,6 +73,7 @@ function LoginUser(props) {
         </div>
       </div>
     </div>
+    </>
     // <>
     //   Login
     //   <br />

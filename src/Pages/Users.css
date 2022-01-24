@@ -1,0 +1,16 @@
+.phoneNumber p {
+  font-style: italic;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.location {
+  margin: 1rem 0;
+}
+.location p {
+  margin: 0;
+}
+
+.email {
+  font-size: 0.8rem;
+}
