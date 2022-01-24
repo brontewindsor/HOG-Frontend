@@ -45,11 +45,12 @@ function App(props) {
 
   return (
     
+    
       
     <div><Router >
       <NavbarCode logout={props.logout}/>
       <Routes>
-        <Route path='/' element={<Dashboard
+        <Route exact path='/' element={<Dashboard
           client={props.client}
           user={props.user} 
           logout={props.logout}

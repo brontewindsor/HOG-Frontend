@@ -24,8 +24,6 @@ import SocialCard from "./SocialCard";
 */
 
 
-
-
 function Dashboard(props) {
   const titleInputRef = useRef();
   const firstNameInputRef = useRef();
@@ -64,15 +62,12 @@ function Dashboard(props) {
   const [current, cCurrent] = useState(undefined);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
-
   const refreshList = () => {
     props.client.getAds().then((response) => cAds(response.data));
   };
-
   const removeAdvert = (id) => {
     props.client.removeAd(id).then(() => refreshList());
   };
-
   const updateAdvert = (ad) => {
     cCurrent(ad);
     setShow(!show);
@@ -80,11 +75,9 @@ function Dashboard(props) {
   const querySearch = (searchParams) => {
     props.client.queryResult(searchParams).then((response) => cAds(response.data))
   }
-
   useEffect(() => {
     refreshList();
   }, []);
-
   const buildRows = () => {
     return ads.map((current) => {
       return (
@@ -118,7 +111,6 @@ function Dashboard(props) {
           </Navbar.Brand>
         </Container>
       </Navbar>
-
       </div> */}
 
       <div>
@@ -147,7 +139,6 @@ function Dashboard(props) {
             <label htmlFor='address'>Address</label>
             <input type='text' required id='address' ref={addressInputRef} />
           </div>
-
           <div className={classes.actions}>
             <button>Add User Details</button>
           </div>
