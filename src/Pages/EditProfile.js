@@ -71,9 +71,9 @@ function EditProfile(props) {
     }
 
     return (
-        <div className="outer-container">
-            <div className="login-container">
-                <div className="login-div">
+        <div className="participant-outer-container">
+            <div className="participant-container">
+                <div className="participant-div">
                     <form onSubmit={(e) => submitHandlerCreate(e)} id="addUser">
                         <div className="form-inner">
                             <h2 >Edit Profile</h2>
@@ -81,39 +81,38 @@ function EditProfile(props) {
                             <img src="" alt="profile-pic" className="profile-pic" />
                                     <input type="file" id="imageInput" onChange={""} />
                             <label htmlFor="chooseAccount">Account type: 
-                            <input type="text" name="first_name" placeholder={props.userType} disabled="disabled"/></label>
+                            <input type="text" name="userType" placeholder={props.userType} disabled="disabled"/></label>
                                 <label htmlFor="name">Username:
-                                <input type="text" name="first_name" placeholder={props.user} disabled="disabled"/></label>
+                                <input type="text" name="username" placeholder={props.user} disabled="disabled"/></label>
 
 
-                                <label htmlFor="first_name">First Name: {props.bio}</label>
-                                <input type="text" name="first_name" defaultValue={props.currentUser?.email || ""}
+                                <label htmlFor="first_name">First Name: </label>
+                                <input type="text" name="firstName" placeholder={props.firstName}
                                     disabled={disabled}
                                     required="required" />
 
-                                <label htmlFor="last_name">Surname: {props.bio}</label>
-                                <input type="text" name="last_name" defaultValue={props.currentUser?.email || ""}
+                                <label htmlFor="last_name">Surname: </label>
+                                <input type="text" name="lastName" placeholder={props.lastName}
                                     disabled={disabled}
                                     required="required" />
 
-                                <label htmlFor="bio">Bio: {props.bio}</label>
-                                <input type="text" name="bio" defaultValue={props.currentUser?.email || ""}
-                                    placeholder="about me..."
+                                <label htmlFor="bio">Bio: </label>
+                                <input type="text" name="bio" placeholder={props.bio}
                                     disabled={disabled}
                                     required="required" />
                                     
-                                    <label htmlFor="location">Location: {props.location}</label>
-                                <input type="text" name="location" defaultValue={props.currentUser?.email || ""}
-                                    placeholder="City, State, Country"
+                                    <label htmlFor="location">Location: </label>
+                                <input type="text" name="location" 
+                                    placeholder={props.location}
                                     disabled={disabled}
                                     required="required" />
 
 
-                                <label htmlFor="website">Website: {props.bio}</label>
-                                <input type="text" name="bio" defaultValue={props.currentUser?.email || ""}
+                                {/* <label htmlFor="website">Website: </label>
+                                <input type="text" name="bio" 
                                     placeholder="your website url"
                                     disabled={disabled}
-                                    required="required" />
+                                    required="required" /> */}
                             </div>
                             
                             <div className="form-group">

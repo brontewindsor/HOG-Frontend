@@ -1,0 +1,198 @@
+th {
+  border-bottom: 1px solid black;
+  color: orangered;
+}
+tr:nth-child(even) {
+  background-color: #1073e585;
+  color: white;
+}
+tr:nth-child(odd) {
+  color: #054a99;
+  background-color: #8fc3ff7e;
+}
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow: hidden;
+  background-color: #ffff;
+  margin: auto;
+}
+.contentContainer {
+  width: 80%;
+  height: 100%;
+  align-items: center;
+  margin: auto;
+  background-color: #f2f2f2;
+}
+.header-title {
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+  color: #313131;
+  text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
+}
+.header-body {
+  font-size: 20px;
+  color: orangered;
+  padding-top: 20px;
+}
+.form {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  align-items: center;
+}
+table {
+  table-layout: fixed;
+}
+.formContainer {
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin: auto;
+}
+.buttonUpdate {
+  padding: 3px 15px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #d2e4fd;
+  border-radius: 5px;
+  color: #5c8cad;
+  border-width: 2px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  margin: 2px;
+}
+.buttonUpdate:hover {
+  background-color: #5c8cad;
+  color: #fff;
+}
+.buttonRemove {
+  padding: 3px 15px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #f8d3cf;
+  border-radius: 5px;
+  color: #6b0404;
+  border-width: 2px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.buttonRemove:hover {
+  background-color: #6b0404;
+  color: white;
+}
+.buttonSubmit {
+  padding: 3px 15px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #cde9d6;
+  border-radius: 5px;
+  color: #0b6607;
+  border-width: 2px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.buttonSubmit:hover {
+  background-color: #0b6607;
+  color: white;
+}
+.formRow {
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+}
+.buttonShowAdd {
+  padding: 3px 15px;
+  border-radius: 5px;
+  background-color: #1073e585;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonShowAdd2 {
+  padding: 3px 15px;
+  border-radius: 5px;
+  background-color: #26446693;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonShowAdd:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: rgba(53, 53, 53, 0.9);
+}
+.buttonShowAdd2:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #073366;
+}
+.see-less-btn {
+  padding: 3px 15px;
+  border-radius: 5px;
+  background-color: #5a5a5a85;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+
+.see-less-btn:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: rgba(53, 53, 53, 0.9);
+  transition: 0.5s ease;
+}
+.bodyRow {
+  padding: 10px;
+}
+.see-more-btn {
+  padding: 3px 15px;
+  border-radius: 5px;
+  background-color: #ff8a05;
+  color: rgb(85, 85, 85);
+  font-weight: 600;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+
+.see-more-btn:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: rgba(53, 53, 53, 0.9);
+  transition: 0.5s ease;
+}
+.Card {
+  background-color: lightgray;
+  margin: 0.5rem;
+}
+.cardImg {
+  height: 180px;
+  width: 180px;
+}

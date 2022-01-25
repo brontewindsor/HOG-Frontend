@@ -6,5 +6,9 @@ import Login from './login/Login';
 import { BrowserRouter } from 'react-router-dom';
 
 
-ReactDOM.render(<Login />, document.getElementById('root'));
+ReactDOM.render(
+<React.StrictMode>
+    <Login />
+  </React.StrictMode>,
+document.getElementById('root'));
 

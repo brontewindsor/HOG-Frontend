@@ -25,28 +25,28 @@ import SocialCard from "./SocialCard";
 
 
 function Dashboard(props) {
-  const titleInputRef = useRef();
-  const firstNameInputRef = useRef();
-  const lastNameInputRef = useRef();
-  const addressInputRef = useRef();
+  // const titleInputRef = useRef();
+  // const firstNameInputRef = useRef();
+  // const lastNameInputRef = useRef();
+  // const addressInputRef = useRef();
 
 
   function submitHandler(event) {
     event.preventDefault();
 
-    const enteredTitle = titleInputRef.current.value;
-    const enteredFirstName = firstNameInputRef.current.value;
-    const enteredLastName = lastNameInputRef.current.value;
-    const enteredAddress = addressInputRef.current.value;
+    // const enteredTitle = titleInputRef.current.value;
+    // const enteredFirstName = firstNameInputRef.current.value;
+    // const enteredLastName = lastNameInputRef.current.value;
+    // const enteredAddress = addressInputRef.current.value;
 
-    const userData = {
-      title: enteredTitle,
-      firstName: enteredFirstName,
-      lastName: enteredLastName,
-      address: enteredAddress,
-    };
+    // const userData = {
+    //   title: enteredTitle,
+    //   firstName: enteredFirstName,
+    //   lastName: enteredLastName,
+    //   address: enteredAddress,
+    // };
 
-    props.onAddUser(userData);
+    // props.onAddUser(userData);
 
     if (this.props.client.userType === 'participant') {
       return <ParticipantDashboard />

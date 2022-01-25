@@ -1,74 +1,88 @@
 import React, { useState } from "react";
-const createError = require('http-errors');
+import Container  from "react-bootstrap/Container";
+import  Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 
-function Add(props) {
+function Find(props) {
     const [disabled, cDisabled] = useState(false);
 
     const submitHandler = (e) => {
         e.preventDefault();
         const searchParams = {
-            sEvent: e.target.sEvent.value,
-            sLocation: e.target.sLocation.value,
-            minDate: e.target.dateMin.value,
-            maxDate: e.target.dateMax.value,
+            sFullname: e.target.sFullname.value,
+            sEmail: e.target.sEmail.value,
+            sCourse: e.target.sCourse.value,
+            dateMin: e.target.dateMin.value,
+            dateMax: e.target.dateMax.value
         }
-        props.querySearch(searchParams);
-    };
+        props.querySearch(searchParams)
+};
+return (
+<>
+<Container className="mx-auto formContainer">
+    <h5 className="findHeader">Searching for...</h5>
+    <br />
+    <Form className="form2" onSubmit={(e) => submitHandler(e)} id="findCard">
+        <Form.Group>
+    <Form.Label>Fullname: </Form.Label>
+    <Form.Control
+        type="text"
+        defaultValue={props.currentProfileCard?.sFullname}
+        name="sFullname"
+        disabled={disabled}
+        placeholder="Participant full name"></Form.Control>
 
-    return (
-        <>
-            <br />
-            <br />
-            <form onSubmit={(e) => submitHandler(e)} id="findForm">
-                <br />
-                <label for="comment">Event:</label>
-                <br />
-                <textarea
-                    type="text"
-                    defaultValue={props.currentAd?.sEvent}
-                    name="sEvent"
-                    disabled={disabled}
-                    cols={40}
-                    placeholder="Event name"
-                    className="form-control"
-                />
-                <br />
-                Location: <br />
-                <input
-                    type="text"
-                    defaultValue={props.currentAd?.sLocation || ""}
-                    name="sLocation"
-                    disabled={disabled}
-                    size="40"
-                />
-                <br />
-                First Date:
-                <br />
-                <input
-                    type="date"
-                    defaultValue={props.currentAd?.minDate}
-                    name="dateMin"
-                    disabled={disabled}
-                />
-                <br />
-                Second Date:
-                <br />
-                <input
-                    type="date"
-                    defaultValue={props.currentAd?.maxDate}
-                    name="dateMax"
-                    disabled={disabled}
-                />
-                <br />
-                <br />
-                <button className="buttonSubmit" type="submit" disabled={disabled} >
-                    {" "}
-                    Submit{" "}
-                </button>
-            </form>
-        </>
-    );
+    </Form.Group>
+    <Form.Group>
+        <Form.Label>Email:</Form.Label>
+     <Form.Control
+        type="text"
+        defaultValue={props.currentProfileCard?.sEmail}
+        name="sEmail"
+        disabled={disabled}
+        placeholder="Participant Email">
+      </Form.Control>
+    </Form.Group>
+    <Form.Group>
+     <Form.Label>    
+    Course: </Form.Label>
+
+    <Form.Select id="sCourse" name="sCourse">
+        <option value="Sheffield Council 12 week Bootcamp">Sheffield Council 12 week Bootcamp</option>
+        <option value="Part-Time Software Development Bootcamp">Part-Time Software Development Bootcamp</option>
+        <option value="Part-Time Data Science Bootcamp">Part-Time Data Science Bootcamp</option>
+    </Form.Select>
+    </Form.Group>
+    <Form.Group>
+        <Form.Label>
+    Start date:</Form.Label>
+    <Form.Control
+        type="date"
+        defaultValue={props.currentProfileCard?.date}
+        name="dateMin"
+        disabled={disabled}></Form.Control>
+    </Form.Group>
+    <Form.Group>
+    End date: 
+    <Form.Control
+        type="date"
+        defaultValue={props.currentProfileCard?.date}
+        name="dateMax"
+        disabled={disabled}>
+    </Form.Control>
+    </Form.Group>
+    <br/>
+    <Button  size="sm" type="submit" disabled={disabled}>
+        {" "}
+        Search{" "}
+    </Button>
+</Form>
+</Container>
+</>
+);
 }
 
-export default Add;
+ 
+
+export default Find;

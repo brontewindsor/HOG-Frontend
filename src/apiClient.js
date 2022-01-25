@@ -1,8 +1,10 @@
 import axios from "axios";
-const url = "http://localhost:3001/";
+const url = "http://localhost:3002/";
 
 export class ApiClient {
-  constructor(tokenProvider, logoutHandler) {
+  constructor(tokenProvider, logoutHandler, newUserType, newUser) {
+    this.userType=newUserType;
+    this.username=newUser;
     this.tokenProvider = tokenProvider;
     this.logoutHandler = logoutHandler;
   }
@@ -36,17 +38,28 @@ export class ApiClient {
     });
   }
 
-  login(username, password) {
-    return this.apiCall("post", url + "auth/", { username: username, password: password });
+  login(username, password, email, userType, firstName, lastName, bio, location ) {
+    return this.apiCall("post", url + "auth/", { username: username, password: password, email: email, userType: userType, firstName: firstName, lastName: lastName, bio: bio, location: location});
   }
-  signUp(username, password, email, userType) {
+  signUp(username, password, email, userType, firstName, lastName, bio, location) {
     console.log("username", username);
-    return this.apiCall("post", url + "user/", { username: username, password: password, email: email, userType: userType });
+    return this.apiCall("post", url + "user/", { username: username, password: password, email: email, userType: userType, firstName: firstName, lastName: lastName, bio: bio, location: location });
   }
 
-  getAds() {
+  getProfileCards() {
     return this.authenticatedCall("get", url);
   }
+
+  addProfileCard(firstName, lastName,email,bio,linkedin,github,portfolio,admincomments,picture,hired,course,date) {
+    return this.authenticatedCall("post", url, {firstName, lastName, email,bio,linkedin,github,portfolio,admincomments,picture,hired,course,date});
+  }
+  postImage(name,file){
+    const formData = new FormData();
+    formData.append('name',name);
+    formData.append('myFile',file);
+    return this.authenticatedCall("post",`${url}user/new`,formData)
+}
+
   getUsers() {
     return this.authenticatedCall("get", url);
   }
@@ -54,16 +67,16 @@ export class ApiClient {
     return this.authenticatedCall("post", `${url}events/search`, searchParams)
   }
 
-  addAd(event, location, summary, date, time) {
-    return this.authenticatedCall("post", url, { event, location, summary, date, time });
+  addProfileCard(fullname,email,bio,linkedin,github,portfolio,admincomments,picture,hired,course,date) {
+    
+    return this.authenticatedCall("post", url, {fullname,email,bio,linkedin,github,portfolio,admincomments,picture,hired,course,date});
   }
 
 
-  removeAd(id) {
+  removeProfileCard(id) {
     return this.authenticatedCall("delete", `${url}${id}`);
   }
-
-  updateAd(id, event, location, summary, date, time) {
-    return this.authenticatedCall("put", `${url}${id}`, { event, location, summary, date, time });
+  updateProfileCard(id,firstName, lastName, userType, email,bio, location, linkedin,github,portfolio,picture,cv) {
+    return this.authenticatedCall("put", `${url}${id}`, { firstName, lastName, userType, email,bio, location, linkedin,github,portfolio,picture,cv});
   }
 }
