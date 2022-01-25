@@ -11,10 +11,69 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 /* welcome participant */
 .welcome_participant {
   color: orange;
   margin-left: 33.5%;
+}
+
+/* split screen */
+.leftside,
+.rightside {
+  height: 100vh;
+  width: 100%;
+}
+
+.rightside {
+  background: orange;
+}
+
+/*Participant profile card*/
+.participant-outer-container {
+  height: 500px;
+  width: 100vw;
+  background-color: #e8e8e8;
+}
+
+.participant-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+}
+
+.participant-div {
+  background-color: orange;
+
+  /* background-image: linear-gradient(
+    to right,
+    #ffce00 50%,
+    #ffce00 50%,
+    #fe4880
+  ); */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+/* Participant proflie card - Social Icons - */
+.participant-social-icons {
+  color: orange;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.participant-social-icons a {
+  color: orange;
+  justify-content: space-between;
+  padding: 3px;
+  font-size: 20px;
 }
 
 /* Login form */
@@ -26,7 +85,7 @@ code {
 
 .login-container {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   width: 100%;
   align-items: center;
 }
@@ -37,7 +96,6 @@ code {
   font-size: 16px;
 }
 .login-div {
-  margin-top: 20px;
   background-color: orange;
   /* background-image: linear-gradient(
     to right,
@@ -50,25 +108,29 @@ code {
 
   padding: 10px;
   border-radius: 10px;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 form {
   display: block;
   position: relative;
 }
-.edit_profile {
+.edit_profile_btn {
   background-color: orange;
   text-decoration: none;
   width: 80px;
   border-radius: 5px;
   text-align: center;
   height: 25px;
-  float: right;
+  float: left;
 }
-.edit_profile .EditProfile {
+.edit_profile_btn .EditProfile {
   text-decoration: none;
   color: #fff;
   font-size: 14px;
+}
+
+.participant-logout-btn {
+  float: right;
 }
 
 /* form:after {
@@ -87,8 +149,11 @@ form .form-inner {
   position: relative;
   display: block;
   background-color: #fff;
+  border-radius: 10px;
+  border: 5px solid purple;
   padding: 30px;
   z-index: 2;
+  height: 370px;
 }
 
 form .form-inner h2 {
@@ -185,4 +250,84 @@ form .form-inner button[type="button"]:hover {
 }
 .radio-button-participant {
   float: right;
+}
+
+/* Employer dashboard */
+
+.employer-outer-container {
+  height: 400px;
+  width: 100vw;
+  background-color: #e8e8e8;
+}
+
+.employer-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+}
+
+.employer-div {
+  background-color: orange;
+
+  /* background-image: linear-gradient(
+    to right,
+    #ffce00 50%,
+    #ffce00 50%,
+    #fe4880
+  ); */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+/* Employer proflie card - Social Icons - */
+.employer-social-icons {
+  color: orange;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.employer-social-icons a {
+  color: orange;
+  justify-content: space-between;
+  padding: 3px;
+  font-size: 20px;
+}
+
+/* Employer search profiles buttong */
+.search-profiles-btn .search-profiles-button {
+  /* float: center; */
+  /* margin-left: 550px; */
+  text-decoration: none;
+  background-color: orange;
+  border-radius: 6px;
+  padding: 4px;
+  width: 110px;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+}
+.search-profiles-btn .search-profiles-button:hover {
+  background-color: orangered;
+  color: #fff;
+}
+
+/* Employer - profile card social icons */
+.socialcard-social-icons {
+  color: #fff;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.socialcard-social-icons a {
+  color: #fff;
+  justify-content: space-between;
+  padding: 3px;
+  font-size: 20px;
 }

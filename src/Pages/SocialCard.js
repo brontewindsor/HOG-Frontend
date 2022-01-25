@@ -13,7 +13,7 @@ import MoreSocialCard from "./MoreSocialCard";
 //     )
 // };
 
-function SocialCard() {
+function SocialCard(props) {
     const [allUsers, setAllUsers] = useState([]);
     const [users, setUsers] = useState([]);
   

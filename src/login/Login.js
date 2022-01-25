@@ -26,19 +26,40 @@ function Login(props) {
     const [token, changeToken] = useState(window.localStorage.getItem("token"));
     const [user, changeUser] = useState(window.localStorage.getItem("user"));
     const [userType, changeUserType] = useState(window.localStorage.getItem("userType"));
+    const [firstName, changeFirstName] = useState(window.localStorage.getItem("firstName"));
+    const [lastName, changeLastName] = useState(window.localStorage.getItem("lastName"));
+    const [email, changeEmail] = useState(window.localStorage.getItem("email"));
+    const [bio, changeBio] = useState(window.localStorage.getItem("bio"));
+    const [location, changeLocation] = useState(window.localStorage.getItem("location"));
     const [signUp, changeSignUp] = useState(false);
+
     const client = new ApiClient(
         token,
+        userType,
+        user,
         () => logout()
     );
 
-    const login = (newToken, newUser, newUserType) => {
+    const login = (newToken, newUser, newUserType, newFirstName, newLastName, newEmail, newBio, newLocation) => {
         window.localStorage.setItem("token", newToken);
         window.localStorage.setItem("user", newUser);
         window.localStorage.setItem("userType", newUserType);
+        window.localStorage.setItem("firstName", newFirstName);
+        window.localStorage.setItem("lastName", newLastName);
+        window.localStorage.setItem("email", newEmail);
+        window.localStorage.setItem("bio", newBio);
+        window.localStorage.setItem("location", newLocation);
+
+
+
         changeToken(newToken);
         changeUser(newUser);
         changeUserType(newUserType);
+        changeFirstName(newFirstName);
+        changeLastName(newLastName);
+        changeEmail(newEmail);
+        changeBio(newBio);
+        changeLocation(newLocation);
     }
     const signUpClick = () => {
         changeSignUp(true);
@@ -47,25 +68,31 @@ function Login(props) {
     const logout = () => {
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("user");
+        window.localStorage.removeItem("userType");
+
         changeToken(undefined);
+        changeUser("");
+        changeUserType("");
+
+
     }
 
     return (
 
         <>
-{/* 
-<div>
-      <h1>{userType}</h1>
-    </div> */}
+        
+
 
             {token ? (
-                <App client={client} logout={logout} user={user} userType={userType} />
+                <App client={client} logout={logout} user={user} userType={userType} firstName={firstName} lastName={lastName} email={email} bio={bio} location={location}/>
             ) :
                 (signUp ?
-                    (<div><SignUp client={client} changeSignUp={changeSignUp} /></div>) : (<LoginUser loggedIn={(token, newUser, newUserType) => login(token, newUser, newUserType)}
+                    (<div><SignUp client={client} changeSignUp={changeSignUp} /></div>) : (<LoginUser loggedIn={(token, newUser, newUserType, newFirstName, newLastName, newEmail, newBio, newLocation) => login(token, newUser, newUserType, newFirstName, newLastName, newEmail, newBio, newLocation)}
                         client={client}
                         signUp={signUp}
-                        signUpClick={signUpClick} />))}
+                        signUpClick={signUpClick} />))
+                        
+            }
 
 
         </>

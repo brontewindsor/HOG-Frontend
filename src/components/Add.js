@@ -1,30 +1,55 @@
 import React, { useState } from "react";
-const createError = require('http-errors');
+import { FormLabel } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Upload from '../pages/Upload';
+import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
+import './Add.module.css';
 
+const createError = require('http-errors');
 
 function Add(props) {
   const [disabled, cDisabled] = useState(false);
+  const[picture,cPicture]=useState('')
+
 
   const submitHandler = (e) => {
     e.preventDefault();
     cDisabled(true);
     let result;
-    if (props.currentAd) {
-      result = props.client.updateAd(
-        props.currentAd._id,
-        e.target.adEvent.value,
-        e.target.adLocation.value,
-        e.target.summary.value,
-        e.target.date.value,
-        e.target.time.value
+    if (props.currentProfileCard) {
+      result = props.client.updateProfileCard(
+        props.currentProfileCard._id,
+
+        e.target.firstName.value,
+        e.target.lastName.value,
+        e.target.email.value,
+        e.target.bio.value,
+        e.target.linkedin.value,
+        e.target.github.value,
+        e.target.portfolio.value,
+        e.target.admincomments.value,
+        picture,
+        e.target.hired.checked,
+        e.target.course.value,
+        e.target.date.value
       ); 
     } else {
-      result = props.client.addAd(
-        e.target.adEvent.value, 
-        e.target.adLocation.value, 
-        e.target.summary.value, 
-        e.target.date.value, 
-        e.target.time.value);
+      result = props.client.addProfileCard(
+        e.target.firstName.value,
+        e.target.lastName.value,
+        e.target.email.value,
+        e.target.bio.value,
+        e.target.linkedin.value,
+        e.target.github.value,
+        e.target.portfolio.value,
+        e.target.admincomments.value,
+        picture,
+        e.target.hired.checked,
+        e.target.course.value,
+        e.target.date.value
+        );
     }
     result
       .then(() => {
@@ -42,79 +67,109 @@ function Add(props) {
 
   return (
     <>
-      {props.currentAd ? "Update" : "Add"}
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
+    {props.currentProfileCard? "Update Profile" : "Add Profile"}
+    </div>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
       <br />
-      <br />
-      <form onSubmit={(e) => submitHandler(e)} id="addForm">
-        <br />
-        <label form="comment">Event:</label>
-        <br />
-        <textarea
+      <Form onSubmit={(e) => submitHandler(e)} id="addForm">
+        <Row className="g-2">
+          <Col md>
+        <Form.Group>
+      <Form.Label >First Name:</Form.Label> <br />
+        <Form.Control
+          required
           type="text"
-          defaultValue={props.currentAd?.event || ""}
-          name="adEvent"
+          defaultValue={props.currentProfileCard?.user || ""}
+          name="firstName"
           disabled={disabled}
-          cols={40}
-          required="required"
-          placeholder="Event name"
-          
+          placeholder="Your first name here"
         />
-        <br />
-        Location: <br />
-        <input
+        </Form.Group>
+        </Col>
+        <Col md>
+        <Form.Group>
+      <Form.Label >Last Name:</Form.Label> <br />
+        <Form.Control
+          required
           type="text"
-          defaultValue={props.currentAd?.location || ""}
-          name="adLocation"
+          defaultValue={props.currentProfileCard?.user || ""}
+          name="lastName"
           disabled={disabled}
-          size="40"
-          required="required"
+          placeholder="Your last name here"
         />
-        <br />
-        Summary:
-        <br />
-        <textarea
+        </Form.Group>
+        </Col>
+        <Col md>
+        <Form.Group>
+        <Form.Label>Email </Form.Label><br />
+        <Form.Control
+          required
           type="text"
-          defaultValue={props.currentAd?.summary || ""}
-          name="summary"
+          defaultValue={props.currentProfileCard?.email || ""}
+          name="email"
           disabled={disabled}
-          rows={4}
-          cols={40}
-          placeholder="A brief description of the event"
-          required="required"
-        />
-        <br />
-        Date:
-        <br />
+          placeholder="Type your email here">
+        </Form.Control>
+        </Form.Group>
+        </Col>
+        </Row>
+        <Row>
+        <Form.Group>
+        <Form.Label>Bio</Form.Label>
+        <Form.Control
+          type="text"
+          defaultValue={props.currentProfileCard?.bio || ""}
+          name="bio"
+          disabled={disabled}>
+        </Form.Control>
+        </Form.Group>
+        </Row>
+        <Row>
+          <Col md>
+        <Form.Group>
+        <Form.Label>Linkedin</Form.Label>
+        <Form.Control
+          type="text"
+          defaultValue={props.currentProfileCard?.linkedin || ""}
+          name="linkedin"
+          disabled={disabled}>
+            </Form.Control>
+          </Form.Group>
+          </Col>
+          <Col md>
+        <Form.Group>
+        <Form.Label>Github</Form.Label>
+        <Form.Control
+          type="text"
+          defaultValue={props.currentProfileCard?.github || ""}
+          name="github"
+          disabled={disabled}>
+        </Form.Control>
+        </Form.Group>
+        </Col>
+        </Row>
+        <Row>
+        <Form.Group>
+        <Form.Label> Portfolio</Form.Label>
+        <Form.Control
+          type="text"
+          defaultValue={props.currentProfileCard?.portfolio || ""}
+          name="portfolio"
+          disabled={disabled}>
+        </Form.Control>
+        </Form.Group>
+        </Row>
+        <Form.Label>Picture</Form.Label>
+        <Upload client={props.client} changePicture={cPicture}/>
 
-        <input
-          type="date"
-          defaultValue={props.currentAd?.date || ""}
-          name="date"
-          disabled={disabled}
-          placeholder="dd/mm/yyyy"
-          size="100"
-          required="required"
-        />
-        <br />
-        Time:
-
-        <br />
-        <input
-          type="time"
-          defaultValue={props.currentAd?.time || ""}
-          name="time"
-          disabled={disabled}
-          placeholder="--:--"
-          size="100"
-          required="required"
-        />
-        <br />
-        <br />
-        <button className="buttonSubmit" type="submit" disabled={disabled} >
+        <br/>
+        <Button size="sm"type="submit" disabled={disabled}>
           {" "}
           Submit{" "}
-        </button>
-      </form>
+        </Button>
+      </Form>
+      </div>
     </>
   );
 }

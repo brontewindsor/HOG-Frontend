@@ -16,6 +16,13 @@ function SignUp(props) {
             e.target.password.value,
             e.target.email.value,
             e.target.userType.value,
+            e.target.firstName.value,
+            e.target.lastName.value,
+            e.target.bio.value,
+            e.target.location.value,
+
+
+
         );
         newUser.then(() => {
             cDisabled(false);
@@ -62,9 +69,37 @@ function SignUp(props) {
                                     required="required" />
                             </div>
                             <div className="form-group">
+                                <label htmlFor="first_name">First Name:</label>
+                                <input type="text" name="firstName" defaultValue={props.currentUser?.firstName || ""}
+                                    placeholder="First Name"
+                                    disabled={disabled}
+                                    required="required" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Last Name:</label>
+                                <input type="text" name="lastName" defaultValue={props.currentUser?.lastName || ""}
+                                    placeholder="Last Name"
+                                    disabled={disabled}
+                                    required="required" />
+                            </div>
+                            <div className="form-group">
                                 <label htmlFor="email">Your email:</label>
                                 <input type="email" name="email" defaultValue={props.currentUser?.email || ""}
                                     placeholder="example@email.com"
+                                    disabled={disabled}
+                                    required="required" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="email">Bio:</label>
+                                <input type="text" name="bio" defaultValue={props.currentUser?.bio || ""}
+                                    placeholder="about me..."
+                                    disabled={disabled}
+                                    required="required" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="location">Location:</label>
+                                <input type="text" name="location" defaultValue={props.currentUser?.location || ""}
+                                    placeholder="City, County, Country"
                                     disabled={disabled}
                                     required="required" />
                             </div>

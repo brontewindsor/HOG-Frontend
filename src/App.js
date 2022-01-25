@@ -5,13 +5,16 @@ import Dashboard from './pages/Dashboard';
 import EmployerDashboard from './pages/EmployerDashboard';
 import ParticipantDashboard from './pages/ParticipantDashboard';
 import SocialCard from "./pages/SocialCard";
+import Profilecard from "./pages/Profilecard";
 import "./App.css";
 import EditProfile from "./pages/EditProfile";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from "react-bootstrap/Navbar";
 import './pages/Navbar.css';
-import NavbarCode from "./pages/NavbarCode";
+// import NavbarCode from "./pages/NavbarCode";
+import SignUp from "./login/SignUp";
+import Login from "./login/Login";
 
 // import ViewParticipants from "./pages/ViewParticipants";
 
@@ -48,23 +51,49 @@ function App(props) {
     
       
     <div><Router >
-      <NavbarCode logout={props.logout}/>
+      
+      {/* <NavbarCode logout={props.logout}/> */}
       <Routes>
         <Route exact path='/' element={<Dashboard
           client={props.client}
           user={props.user} 
           logout={props.logout}
-          userType={props.userType}/>} />
+          userType={props.userType}
+          firstName={props.firstName}
+          lastName={props.lastName} 
+          email={props.email} 
+          bio={props.bio}
+          location={props.location} />} />
 
-        <Route path='/employer' element={<EmployerDashboard  user={props.user} userType={props.userType}/>} />
-        <Route path='/participant' element={<ParticipantDashboard user={props.user} userType={props.userType}/>} />
+        <Route exact path='/employer' element={<EmployerDashboard  
+             user={props.user} 
+             userType={props.userType} 
+             firstName={props.firstName} 
+             lastName={props.lastName} 
+             email={props.email} 
+             bio={props.bio} 
+             location={props.location} 
+             logout={props.logout}/>} />
+
+        <Route exact path='/participant' element={<ParticipantDashboard 
+        user={props.user} 
+        userType={props.userType} 
+        firstName={props.firstName} 
+        lastName={props.lastName} 
+        email={props.email} 
+        bio={props.bio} 
+        location={props.location} 
+        logout={props.logout}/>} />
 
 
         <Route path='/admin' element={<AdminDashboard />} />
 
         
-        <Route path="/SocialCard" element={<SocialCard />} />
-        <Route path="/EditProfile" element={<EditProfile user={props.user} userType={props.userType} email={props.email}/>} />
+        <Route path="/SocialCard" element={<SocialCard user={props.user} />} />
+        <Route path="/EditProfile" element={<EditProfile user={props.user} userType={props.userType} firstName={props.firstName} lastName={props.lastName} email={props.email} bio={props.bio} location={props.location}/>} />
+
+        <Route path="/Profilecard" element={<Profilecard user={props.user} userType={props.userType} firstName={props.firstName} lastName={props.lastName} email={props.email} bio={props.bio} location={props.location}/>} />
+
 
 
 
